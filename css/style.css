@@ -1,5 +1,32 @@
 /* =========================================================
-   RESET
+   1. VARIABLES
+========================================================= */
+
+:root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --bg-hover: #1c2128;
+
+    --heading: #f0f6fc;
+    --text: #c9d1d9;
+    --muted: #8b949e;
+
+    --accent: #58a6ff;
+    --accent-hover: #79c0ff;
+    --green: #3fb950;
+
+    --border: #30363d;
+    --radius: 8px;
+
+    --max-width: 1100px;
+    --header-height: 70px;
+
+    --font: "JetBrains Mono", ui-monospace, monospace;
+}
+
+
+/* =========================================================
+   2. RESET
 ========================================================= */
 
 *,
@@ -15,59 +42,47 @@ html {
 }
 
 body {
-    background: #0d1117;
-    color: #c9d1d9;
-    font-family: "JetBrains Mono", monospace;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
     line-height: 1.7;
 }
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-:root {
-    --bg: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-hover: #1c2128;
-
-    --text: #c9d1d9;
-    --muted: #8b949e;
-
-    --accent: #58a6ff;
-    --green: #3fb950;
-
-    --border: #30363d;
-
-    --max-width: 1100px;
+::selection {
+    background: var(--accent);
+    color: var(--bg);
 }
 
 
 /* =========================================================
-   GENERAL
+   3. TYPOGRAPHY
 ========================================================= */
 
-body {
-    min-height: 100vh;
+h1,
+h2,
+h3 {
+    color: var(--heading);
+    line-height: 1.2;
 }
 
-main {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 2rem;
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
 }
 
-section {
-    padding: 100px 0;
-    border-bottom: 1px solid var(--border);
+h2::before {
+    content: "# ";
+    color: var(--green);
 }
 
-section:last-child {
-    border-bottom: none;
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
 p {
-    color: var(--text);
     margin-bottom: 1rem;
 }
 
@@ -78,74 +93,83 @@ a {
 }
 
 a:hover {
-    color: #79c0ff;
-    text-decoration: underline;
-}
-
-ul {
-    margin-left: 1.5rem;
-}
-
-li {
-    margin-bottom: 0.5rem;
+    color: var(--accent-hover);
 }
 
 
 /* =========================================================
-   HEADER / NAVIGATION
+   4. LAYOUT
+========================================================= */
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--border);
+    /* щоб заголовок не ховався під закріпленим меню */
+    scroll-margin-top: var(--header-height);
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* текстові секції — не ширше ~75 символів, так легше читати */
+#about p,
+#experience p {
+    max-width: 75ch;
+}
+
+
+/* =========================================================
+   5. HEADER / NAV
 ========================================================= */
 
 header {
     position: sticky;
     top: 0;
-    z-index: 1000;
-
-    background: rgba(13, 17, 23, 0.92);
+    z-index: 100;
+    background: rgba(13, 17, 23, 0.85);
     border-bottom: 1px solid var(--border);
-
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 nav {
     max-width: var(--max-width);
-    min-height: 70px;
+    min-height: var(--header-height);
     margin: 0 auto;
     padding: 0 2rem;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 2rem;
 }
 
 .logo {
-    color: var(--text);
+    color: var(--heading);
     font-weight: 700;
-    font-size: 1rem;
     white-space: nowrap;
-}
-
-.logo:hover {
-    color: var(--accent);
-    text-decoration: none;
 }
 
 .nav-links {
     display: flex;
-    align-items: center;
     gap: 1.5rem;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-actions a:first-child {
     color: var(--muted);
     font-size: 0.85rem;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-actions a:first-child:hover {
     color: var(--accent);
-    text-decoration: none;
 }
 
 .nav-actions {
@@ -154,135 +178,106 @@ nav {
     gap: 1rem;
 }
 
-.nav-actions a {
-    font-size: 0.85rem;
-}
-
+/* "Download CV" у меню — кнопка з рамкою */
 .nav-actions a:last-child {
-    padding: 0.5rem 0.9rem;
-
+    padding: 0.4rem 0.8rem;
     border: 1px solid var(--accent);
-    border-radius: 6px;
-
-    color: var(--accent);
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-actions a:last-child:hover {
     background: var(--accent);
     color: var(--bg);
-    text-decoration: none;
 }
 
 
 /* =========================================================
-   HERO
+   6. HERO
 ========================================================= */
 
+/* flex-рядок з переносом: тексти займають усю ширину,
+   а кнопки (a) стають поруч в один рядок */
 #hero {
-    min-height: calc(100vh - 70px);
-
+    min-height: calc(100svh - var(--header-height));
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    align-content: center;
 }
 
+#hero > :not(a) {
+    width: 100%;
+}
+
+/* "> whoami" + мигаючий курсор */
 #hero p:first-child {
     color: var(--green);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#hero p:first-child::after {
+    content: "_";
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
 }
 
 #hero h1 {
-    color: #f0f6fc;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.25rem, 7vw, 4.5rem);
+    margin-bottom: 1.25rem;
 }
 
-#hero p:nth-of-type(2) {
-    color: var(--muted);
+/* "+" = елемент, що йде ОДРАЗУ після. h1 + p — перший абзац після h1 */
+#hero h1 + p {
+    color: var(--accent);
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.25rem;
 }
 
+#hero h1 + p + p {
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+}
+
+/* кнопки в hero */
 #hero a {
     display: inline-block;
-    margin-right: 1rem;
-    margin-bottom: 0.5rem;
-
-    padding: 0.7rem 1.2rem;
-
+    margin: 0 1rem 0.75rem 0;
+    padding: 0.65rem 1.2rem;
     border: 1px solid var(--border);
-    border-radius: 6px;
-
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 #hero a:hover {
     background: var(--bg-hover);
     border-color: var(--accent);
-    text-decoration: none;
+    color: var(--heading);
     transform: translateY(-2px);
 }
 
+/* головна кнопка "Download CV" */
 #hero a:first-of-type {
     background: var(--accent);
-    color: #0d1117;
     border-color: var(--accent);
+    color: var(--bg);
     font-weight: 700;
 }
 
 #hero a:first-of-type:hover {
-    background: #79c0ff;
+    background: var(--accent-hover);
+    color: var(--bg);
 }
 
 
 /* =========================================================
-   HEADINGS
+   7. ABOUT
 ========================================================= */
-
-h2 {
-    color: var(--accent);
-    font-size: 2rem;
-    margin-bottom: 2.5rem;
-}
-
-h2::before {
-    content: "# ";
-    color: var(--green);
-}
-
-h3 {
-    color: #f0f6fc;
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-}
-
-h4 {
-    color: var(--muted);
-    font-size: 0.85rem;
-    font-weight: 400;
-    margin-bottom: 1.25rem;
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-#about {
-    max-width: 850px;
-}
-
-#about p {
-    color: var(--text);
-    max-width: 800px;
-}
 
 #about p:last-child {
     color: var(--muted);
@@ -290,68 +285,108 @@ h4 {
 
 
 /* =========================================================
-   EXPERIENCE
+   8. EXPERIENCE
 ========================================================= */
 
+#experience article {
+    border-left: 2px solid var(--border);
+    padding-left: 1.75rem;
+}
+
+/* h2 лежить усередині article — прибираємо його з лінії */
+#experience article h2 {
+    margin-left: -1.75rem;
+}
+
 #experience h3 {
+    position: relative;
     margin-bottom: 0.25rem;
 }
 
-#experience h4 {
+/* кружечок на лінії таймлайну */
+#experience h3::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.75rem - 7px);
+    top: 0.25rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--green);
+}
+
+/* рядок з датами — абзац одразу після h3 */
+#experience h3 + p {
     color: var(--green);
-    margin-bottom: 1.5rem;
-}
-
-#experience p {
-    max-width: 800px;
-}
-
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-#projects {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-#projects h2 {
+    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
 
-#projects h3 {
-    margin-bottom: 0.75rem;
+
+/* =========================================================
+   9. PROJECTS — картки на CSS Grid
+========================================================= */
+
+#projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
-#projects h3:not(:first-of-type) {
-    margin-top: 1rem;
+/* заголовок секції займає весь рядок сітки */
+#projects h2 {
+    grid-column: 1 / -1;
+    margin-bottom: 0.5rem;
 }
 
-#projects p {
-    max-width: 850px;
+#projects article {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+#projects article:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+#projects article p {
     color: var(--muted);
-    line-height: 1.8;
+    font-size: 0.9rem;
+}
+
+/* рядок технологій — останній абзац, притиснутий до низу картки */
+#projects article p:last-child {
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border);
+    color: var(--accent);
+    font-size: 0.8rem;
 }
 
 
 /* =========================================================
-   SKILLS
+   10. SKILLS — ваш варіант
 ========================================================= */
+
+#skills h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
 
 #skills p {
     max-width: 850px;
-
     padding: 1rem 1.25rem;
-
-    background: var(--bg-secondary);
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 6px;
-
-    transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 #skills p:hover {
@@ -365,11 +400,11 @@ h4 {
 
 
 /* =========================================================
-   EDUCATION
+   11. EDUCATION — ваш варіант
 ========================================================= */
 
 #education h3 {
-    color: #f0f6fc;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
@@ -379,7 +414,11 @@ h4 {
 
 #education ul {
     color: var(--text);
-    margin-top: 1rem;
+    margin: 1rem 0 0 1.5rem;
+}
+
+#education li {
+    margin-bottom: 0.5rem;
 }
 
 #education li::marker {
@@ -388,23 +427,20 @@ h4 {
 
 
 /* =========================================================
-   LANGUAGES
+   12. LANGUAGES
 ========================================================= */
 
 #languages ul {
     list-style: none;
-    margin-left: 0;
-    max-width: 500px;
+    max-width: 480px;
 }
 
 #languages li {
-    padding: 0.8rem 1rem;
-
-    background: var(--bg-secondary);
-    border-left: 2px solid var(--accent);
-
+    padding: 0.75rem 1rem;
     margin-bottom: 0.5rem;
-
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
     transition: background 0.2s ease;
 }
 
@@ -414,7 +450,7 @@ h4 {
 
 
 /* =========================================================
-   BEYOND CODING
+   13. BEYOND CODING — ваш варіант
 ========================================================= */
 
 #beyond p {
@@ -427,43 +463,37 @@ h4 {
 
 
 /* =========================================================
-   CONTACT
+   14. CONTACT
 ========================================================= */
 
 #contact {
     text-align: center;
 }
 
-#contact h2 {
-    margin-bottom: 1.5rem;
-}
-
-#contact p {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#contact p:first-of-type {
-    color: #f0f6fc;
-    font-size: 1.4rem;
+#contact h2 + p {
+    color: var(--heading);
+    font-size: 1.5rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
-#contact p:nth-of-type(2) {
+#contact h2 + p + p {
     color: var(--muted);
-    margin-bottom: 2rem;
+    max-width: 60ch;
+    margin: 0 auto 2rem;
 }
 
+/* Email / GitHub / LinkedIn — плашки в один рядок */
 #contact p:nth-of-type(n+3) {
     display: inline-block;
-    margin: 0.5rem;
-
-    padding: 0.7rem 1rem;
-
-    background: var(--bg-secondary);
+    margin: 0.4rem;
+    padding: 0.65rem 1.1rem;
+    background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
 }
 
 #contact p:nth-of-type(n+3):hover {
@@ -472,34 +502,24 @@ h4 {
 
 
 /* =========================================================
-   FOOTER
+   15. FOOTER
 ========================================================= */
 
 footer {
-    max-width: var(--max-width);
-    margin: 0 auto;
     padding: 2rem;
-
-    color: var(--muted);
-    text-align: center;
-    font-size: 0.8rem;
-
     border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0.25rem;
 }
 
 
 /* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-
-/* =========================================================
-   SCROLLBAR
+   16. SCROLLBAR (Chrome, Safari, Edge)
 ========================================================= */
 
 ::-webkit-scrollbar {
@@ -521,99 +541,76 @@ footer {
 
 
 /* =========================================================
-   MOBILE
+   17. RESPONSIVE
 ========================================================= */
 
 @media (max-width: 900px) {
+    :root {
+        --header-height: 104px; /* меню переноситься у 2 рядки */
+    }
 
     nav {
         flex-wrap: wrap;
-        padding: 1rem 1.5rem;
-        gap: 1rem;
+        padding: 0.75rem 1.5rem;
+        gap: 0.5rem 1rem;
     }
 
     .nav-links {
-        order: 3;
+        order: 3;           /* посилання — окремим рядком унизу */
         width: 100%;
-
-        overflow-x: auto;
-
-        justify-content: flex-start;
-
-        padding-bottom: 0.5rem;
+        overflow-x: auto;   /* горизонтальний скрол замість переповнення */
+        gap: 1.25rem;
+        padding-bottom: 0.25rem;
     }
 
     .nav-links a {
         white-space: nowrap;
     }
 
-    .nav-actions {
-        margin-left: auto;
-    }
-
     section {
-        padding: 70px 0;
+        padding: 72px 0;
     }
 }
 
-
 @media (max-width: 600px) {
-
-    main {
-        padding: 0 1.25rem;
-    }
-
+    main,
     nav {
-        padding: 1rem 1.25rem;
-    }
-
-    .logo {
-        font-size: 0.9rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
 
     .nav-actions a:first-child {
         display: none;
     }
 
-    .nav-actions a:last-child {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.7rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-    }
-
-    .nav-links a {
-        font-size: 0.75rem;
-    }
-
-    #hero {
-        min-height: calc(100vh - 110px);
-    }
-
-    #hero h1 {
-        font-size: 2.5rem;
-    }
-
-    #hero p:nth-of-type(2) {
-        font-size: 0.9rem;
-    }
-
     h2 {
-        font-size: 1.6rem;
-    }
-
-    h3 {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     section {
-        padding: 60px 0;
+        padding: 56px 0;
+    }
+
+    #projects { 
+        grid-template-columns: 1fr;
     }
 
     #contact p:nth-of-type(n+3) {
         display: block;
-        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   18. ACCESSIBILITY — якщо в системі вимкнено анімації
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }
