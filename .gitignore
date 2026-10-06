@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+Thumbs.db
