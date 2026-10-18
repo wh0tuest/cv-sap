@@ -1,0 +1,75 @@
+{
+  "nav.about": "O mnie",
+  "nav.experience": "Doświadczenie",
+  "nav.projects": "Projekty",
+  "nav.skills": "Umiejętności",
+  "nav.education": "Edukacja",
+  "nav.contact": "Kontakt",
+  "nav.download": "Pobierz CV",
+
+  "hero.location": "Warszawa, Polska · Otwarty na nowe możliwości",
+  "hero.download": "Pobierz CV",
+
+  "about.title": "O mnie",
+  "about.p1": "Jestem studentem informatyki w Polsko-Japońskiej Akademii Technik Komputerowych. Skupiam się na programowaniu backendu, bazach danych i inżynierii oprogramowania.",
+  "about.p2": "Mój główny stack technologiczny to Java, Spring Boot, SQL, Hibernate/JPA, REST API i Git. Lubię rozumieć, jak systemy działają od środka, projektować struktury baz danych i zamieniać wymagania w działające aplikacje.",
+  "about.p3": "Mam również doświadczenie w zarządzaniu projektami, które pomogło mi rozwinąć umiejętności komunikacji, pracy zespołowej, organizacji i rozwiązywania problemów.",
+
+  "experience.title": "Doświadczenie",
+  "experience.from": "lip 2025",
+  "experience.to": "lis 2025",
+  "experience.p1": "Współpracowałem z zespołem programistów przy planowaniu i koordynowaniu działań projektowych, przekazywaniu wymagań, organizowaniu zadań i pilnowaniu, aby prace postępowały zgodnie z celami projektu.",
+  "experience.p2": "To doświadczenie dało mi szersze zrozumienie cyklu wytwarzania oprogramowania oraz tego, jak współdziałają programiści, wymagania biznesowe i zarządzanie projektem.",
+
+  "projects.title": "Projekty",
+
+  "skills.title": "Umiejętności",
+  "skills.programming": "Programowanie",
+  "skills.backend": "Backend",
+  "skills.databases": "Bazy danych",
+  "skills.tools": "Narzędzia",
+  "skills.engineering": "Inżynieria oprogramowania",
+
+  "education.title": "Edukacja",
+  "education.school": "Informatyka — Polsko-Japońska Akademia Technik Komputerowych",
+  "education.degree": "Stopień: studia I stopnia z informatyki",
+  "education.graduation": "Przewidywany rok ukończenia: 2027",
+  "education.location": "Warszawa, Polska",
+  "education.p1": "Obecnie studiuję informatykę ze szczególnym naciskiem na tworzenie oprogramowania, bazy danych i systemy informacyjne.",
+  "education.areas": "Najważniejsze obszary:",
+  "education.li1": "Programowanie obiektowe",
+  "education.li2": "Bazy danych i SQL",
+  "education.li3": "Inżynieria oprogramowania",
+  "education.li4": "Tworzenie aplikacji webowych",
+  "education.li5": "Algorytmy i struktury danych",
+  "education.li6": "Sieci komputerowe",
+  "education.li7": "Projektowanie systemów",
+
+  "languages.title": "Języki",
+  "languages.uk": "Ukraiński — ojczysty",
+  "languages.ru": "Rosyjski — C1",
+  "languages.en": "Angielski — B2",
+  "languages.pl": "Polski — B2",
+  "languages.es": "Hiszpański — A1",
+
+  "beyond.title": "Poza kodem",
+  "beyond.p1": "Poza programowaniem jestem mocno związany z koszykówką. Lubię grać i śledzić ten sport — nauczył mnie dyscypliny, systematyczności i pracy zespołowej.",
+  "beyond.p2": "Interesuję się też technologią, grami, motoryzacją i podróżami. Wolę uczyć się w praktyce i budować prawdziwe projekty, niż opierać się wyłącznie na teorii.",
+
+  "contact.title": "Kontakt",
+  "contact.lead": "Zbudujmy coś razem.",
+  "contact.text": "Jestem otwarty na oferty pracy jako Java Software Engineer, Backend Developer lub Software Engineer w Warszawie lub zdalnie.",
+  "contact.emailLink": "Wyślij email",
+  "contact.githubLink": "Profil GitHub",
+  "contact.linkedinLink": "Profil LinkedIn",
+
+  "form.name": "Twoje imię",
+  "form.email": "Twój email",
+  "form.message": "Twoja wiadomość",
+  "form.send": "Wyślij wiadomość",
+  "form.sending": "Wysyłanie...",
+  "form.success": "Dziękuję! Wiadomość została wysłana.",
+  "form.error": "Coś poszło nie tak. Spróbuj ponownie później.",
+
+  "footer.built": "Zbudowane z HTML, CSS, JavaScript i Spring Boot"
+}

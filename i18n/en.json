@@ -1,0 +1,75 @@
+{
+  "nav.about": "About",
+  "nav.experience": "Experience",
+  "nav.projects": "Projects",
+  "nav.skills": "Skills",
+  "nav.education": "Education",
+  "nav.contact": "Contact",
+  "nav.download": "Download CV",
+
+  "hero.location": "Warsaw, Poland · Open to opportunities",
+  "hero.download": "Download CV",
+
+  "about.title": "About Me",
+  "about.p1": "I am a Computer Science student at the Polish-Japanese Academy of Information Technology, focused on backend development, databases and software engineering.",
+  "about.p2": "My main technology stack includes Java, Spring Boot, SQL, Hibernate/JPA, REST APIs and Git. I enjoy understanding how systems work under the hood, designing database structures, and turning requirements into functional applications.",
+  "about.p3": "I also have experience working in project management, which helped me develop communication, teamwork, organization, and problem-solving skills alongside my technical background.",
+
+  "experience.title": "Experience",
+  "experience.from": "Jul 2025",
+  "experience.to": "Nov 2025",
+  "experience.p1": "Worked with a development team on planning and coordinating project activities, communicating requirements, organizing tasks, and ensuring that work progressed according to project goals.",
+  "experience.p2": "This experience gave me a broader understanding of the software development lifecycle and how developers, business requirements, and project management interact.",
+
+  "projects.title": "Projects",
+
+  "skills.title": "Skills",
+  "skills.programming": "Programming",
+  "skills.backend": "Backend",
+  "skills.databases": "Databases",
+  "skills.tools": "Tools",
+  "skills.engineering": "Software Engineering",
+
+  "education.title": "Education",
+  "education.school": "Computer Science — Polish-Japanese Academy of Information Technology",
+  "education.degree": "Degree: Bachelor of Science in Computer Science",
+  "education.graduation": "Expected Graduation Year: 2027",
+  "education.location": "Warsaw, Poland",
+  "education.p1": "Currently completing a degree in Computer Science with a focus on software development, databases and information systems.",
+  "education.areas": "Relevant areas include:",
+  "education.li1": "Object-Oriented Programming",
+  "education.li2": "Databases and SQL",
+  "education.li3": "Software Engineering",
+  "education.li4": "Web Development",
+  "education.li5": "Algorithms and Data Structures",
+  "education.li6": "Computer Networks",
+  "education.li7": "System Design",
+
+  "languages.title": "Languages",
+  "languages.uk": "Ukrainian — Native",
+  "languages.ru": "Russian — C1",
+  "languages.en": "English — B2",
+  "languages.pl": "Polish — B2",
+  "languages.es": "Spanish — A1",
+
+  "beyond.title": "Beyond Coding",
+  "beyond.p1": "Outside of programming, I am strongly connected with basketball. I enjoy playing and following the sport, and it has taught me discipline, consistency and teamwork.",
+  "beyond.p2": "I am also interested in technology, gaming, cars and travelling. I prefer learning through practice and building real projects rather than relying only on theory.",
+
+  "contact.title": "Contact",
+  "contact.lead": "Let's build something together.",
+  "contact.text": "I am currently open to Java Software Engineer, Backend Developer and Software Engineering opportunities in Warsaw or remotely.",
+  "contact.emailLink": "Send email",
+  "contact.githubLink": "GitHub Profile",
+  "contact.linkedinLink": "LinkedIn Profile",
+
+  "form.name": "Your name",
+  "form.email": "Your email",
+  "form.message": "Your message",
+  "form.send": "Send message",
+  "form.sending": "Sending...",
+  "form.success": "Thank you! Your message has been sent.",
+  "form.error": "Something went wrong. Please try again later.",
+
+  "footer.built": "Built with HTML, CSS, JavaScript & Spring Boot"
+}
