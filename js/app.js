@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:8080';
+const API_URL = location.hostname === 'wh0tuest.github.io'
+    ? 'https://cv-api-x38c.onrender.com'
+    : 'http://localhost:8080';
 
 async function loadProjects(lang = 'en') {
     const section = document.getElementById('projects');
