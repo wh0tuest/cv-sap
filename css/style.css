@@ -178,6 +178,9 @@ nav {
     gap: 1rem;
 }
 
+.nav-links a {
+    white-space: nowrap;
+}
 /* "Download CV" у меню — кнопка з рамкою */
 .nav-actions a:last-child {
     padding: 0.4rem 0.8rem;

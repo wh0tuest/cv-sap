@@ -2,6 +2,33 @@ const API_URL = location.hostname === 'wh0tuest.github.io'
     ? 'https://cv-api-x38c.onrender.com'
     : 'http://localhost:8080';
 
+let translations = {};
+
+async function applyTranslations(lang) {
+    const response = await fetch(`i18n/${lang}.json`);
+    if (!response.ok) {
+        console.error(`Cannot load i18n/${lang}.json`);
+        return;
+    }
+    translations = await response.json();
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const text = translations[el.dataset.i18n];
+        if (text) el.textContent = text;
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const text = translations[el.dataset.i18nPlaceholder];
+        if (text) el.placeholder = text;
+    });
+
+    document.documentElement.lang = lang;
+}
+
+function t(key) {
+    return translations[key] ?? key;
+}
+    
 async function loadProjects(lang = 'en') {
     const section = document.getElementById('projects');
 
@@ -37,13 +64,13 @@ async function loadProjects(lang = 'en') {
 const languageButtons = document.querySelectorAll('.lang-switch button');
 
 function setLanguage(lang) {
-    localStorage.setItem('lang', lang);          // запам'ятати вибір
-    document.documentElement.lang = lang;        // <html lang="pl">
+    localStorage.setItem('lang', lang);
 
     languageButtons.forEach(button => {
         button.classList.toggle('active', button.dataset.lang === lang);
     });
 
+    applyTranslations(lang);
     loadProjects(lang);
 }
 
@@ -57,11 +84,11 @@ const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
 contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault();   // не перезавантажувати сторінку
+    event.preventDefault();
 
     const data = Object.fromEntries(new FormData(contactForm));
 
-    formStatus.textContent = 'Sending...';
+    formStatus.textContent = t('form.sending');            
     formStatus.className = 'form-status';
 
     try {
@@ -73,7 +100,7 @@ contactForm.addEventListener('submit', async (event) => {
         const body = await response.json();
 
         if (response.ok) {
-            formStatus.textContent = 'Thank you! Your message has been sent.';
+            formStatus.textContent = t('form.success'); 
             formStatus.classList.add('success');
             contactForm.reset();
         } else if (response.status === 400 && body.fields) {
@@ -84,7 +111,7 @@ contactForm.addEventListener('submit', async (event) => {
         }
     } catch (error) {
         console.error('Could not send message:', error);
-        formStatus.textContent = 'Something went wrong. Please email me directly.';
+        formStatus.textContent = t('form.error');  
         formStatus.classList.add('error');
     }
 });
