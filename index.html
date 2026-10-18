@@ -24,6 +24,12 @@
                 <a href="#contact">Contact</a>
             </div>
 
+            <div class="lang-switch">
+                <button type="button" data-lang="en">EN</button>
+                <button type="button" data-lang="pl">PL</button>
+                <button type="button" data-lang="uk">UA</button>
+            </div>
+
             <div class="nav-actions">
                 <a href="https://github.com/wh0tuest" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="cv.pdf" download>Download CV</a>
@@ -148,6 +154,14 @@
         <p>Email: <a href="mailto:sashavmart@gmail.com">Send email</a></p>
         <p>GitHub: <a href="https://github.com/wh0tuest" target="_blank">GitHub Profile</a></p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/sanyavmart" target="_blank">LinkedIn Profile</a></p>
+
+        <form id="contact-form" class="contact-form" novalidate>
+            <input type="text" name="name" placeholder="Your name">
+            <input type="email" name="email" placeholder="Your email">
+            <textarea name="message" rows="5" placeholder="Your message"></textarea>
+            <button type="submit">Send message</button>
+            <p id="form-status" class="form-status"></p>
+        </form>
     </section>
 </main>
 
