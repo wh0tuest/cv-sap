@@ -191,6 +191,9 @@ nav {
     background: var(--accent);
     color: var(--bg);
 }
+.nav-actions a {
+    white-space: nowrap;
+}
 
 
 /* =========================================================
